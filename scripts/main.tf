@@ -14,7 +14,7 @@ resource "aws_subnet" "pub_subnet1" {
   map_public_ip_on_launch = true
   tags = {
     env = STG
-  }
+    }
   }
   resource "aws_subnet" "pub_subnet2" {
   vpc_id = aws_vpc.STG_VPC.id
@@ -23,7 +23,7 @@ resource "aws_subnet" "pub_subnet1" {
   map_public_ip_on_launch = true
   tags = {
     env = STG
-  }
+    }
   }
   resource "aws_subnet" "prv_subnet1" {
     vpc_id = aws_vpc.STG_VPC.id
@@ -32,7 +32,7 @@ resource "aws_subnet" "pub_subnet1" {
     map_public_ip_on_launch = false
     tags = {
       env= STG_prv
-    }
+      }
   }
   resource "aws_subnet" "prv_subnet2" {
     vpc_id = aws_vpc.STG_VPC.id
@@ -41,7 +41,7 @@ resource "aws_subnet" "pub_subnet1" {
     map_public_ip_on_launch = false
     tags = {
       env= STG_prv
-    }
+      }
   }
   resource "aws_route_table" "pub_RT" {
     vpc_id = aws_vpc.STG_VPC.id
@@ -55,7 +55,7 @@ resource "aws_subnet" "pub_subnet1" {
     vpc_id = aws_vpc.STG_VPC.id
     route = {
       cidr_block = "0.0.0.0/0"
-    }
+      }
   }
 
   resource "aws_internet_gateway" "my_igw" {
