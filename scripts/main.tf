@@ -63,11 +63,11 @@ resource "aws_subnet" "pub_subnet1" {
   }
 
   resource "aws_route_table_association" "pub_RTAS" {
-    subnet_id = ["aws_subnet.pub_subnet1.id", "aws_subnet.pub_subnet2.id"]
+    subnet_id = "aws_subnet.pub_subnet1.id"
     route_table_id = aws_route_table.pub_RT.id
   }
 
   resource "aws_route_table_association" "prv_RTAS" {
-    subnet_id = ["aws_subnet.prv_subnet1.id", "aws_subnet.prv_subnet2.id"]
+    subnet_id = "aws_subnet.prv_subnet1.id"
     route_table_id = aws_route_table.prv_RT.id
   }
