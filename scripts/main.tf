@@ -1,8 +1,8 @@
 provider "aws" {
   region = var.region
 }
-resource "aws_s3_bucket" "dev-infra-s3" {
-   bucket = "dev-infra-s3" 
+resource "aws_s3_bucket" "stg-infra-s3" {
+   bucket = "stg-infra-s3" 
 }
 resource "aws_vpc" "STG_VPC" {
   cidr_block = var.stg_cidr
@@ -63,11 +63,11 @@ resource "aws_subnet" "pub_subnet1" {
   }
 
   resource "aws_route_table_association" "pub_RTAS" {
-    subnet_id = "aws_subnet.pub_subnet1.id"
     route_table_id = aws_route_table.pub_RT.id
+    subnet_id = aws_subnet.pub_subnet1.id
   }
 
   resource "aws_route_table_association" "prv_RTAS" {
-    subnet_id = "aws_subnet.prv_subnet1.id"
     route_table_id = aws_route_table.prv_RT.id
+    subnet_id = aws_subnet.prv_subnet1.id
   }
