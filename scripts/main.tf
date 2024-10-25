@@ -1,8 +1,18 @@
 provider "aws" {
   region = var.region
 }
-resource "aws_s3_bucket" "stg-infra-s3" {
-   bucket = "stg-infra-s3" 
+# resource "aws_s3_bucket" "stg-infra-s3" {
+#    bucket = "stg-infra-s3" 
+# }
+
+data "aws_s3_bucket" "existing_bucket" {
+  bucket = var.bucket_name
+}
+
+# Create the S3 bucket only if it doesn't already exist
+resource "aws_s3_bucket" "my_s3_bucket" {
+  count  = length(data.aws_s3_bucket.existing_bucket.id) == 0 ? 1 : 0
+  bucket = var.bucket_name
 }
 resource "aws_vpc" "STG_VPC" {
   cidr_block = var.stg_cidr

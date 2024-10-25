@@ -18,3 +18,7 @@ variable "stg_cidr" {
   type = string
   default = "10.0.0.0/16"
 }
+variable "bucket_name" {
+  default = "stg-infra-s3"
+  
+}
