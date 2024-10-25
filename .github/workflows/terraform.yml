@@ -41,6 +41,7 @@ jobs:
       id:   apply
       run: |
           cd scripts/
+          terraform init
           terraform destroy
 
           # terraform init
