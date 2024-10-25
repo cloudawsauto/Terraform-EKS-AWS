@@ -52,12 +52,8 @@ resource "aws_subnet" "pub_subnet1" {
       }
   }
   resource "aws_route_table" "prv_RT" {
-    vpc_id = aws_vpc.STG_VPC.id
-    route {
-      cidr_block = "0.0.0.0/0"
-      }
+    vpc_id = aws_vpc.STG_VPC.id 
   }
-
   resource "aws_internet_gateway" "my_igw" {
     vpc_id = aws_vpc.STG_VPC.id
   }
